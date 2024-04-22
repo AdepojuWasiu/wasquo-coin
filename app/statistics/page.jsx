@@ -31,7 +31,7 @@ const Statistics = () => {
           <div>
             <h1 className="text-[#c29b0c] md:text-[40px] text-[30px] ">Leader Board</h1>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-1">
           {session?.user ? (
           users.map((user) => (
           <div className="flex justify-between gap-[90px] bg-[#000000] px-[30px] py-[15px] rounded-2xl">
