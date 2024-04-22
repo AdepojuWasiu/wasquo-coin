@@ -99,7 +99,7 @@ const Navbar = () => {
                 <Link href='/eco-system'><p className=" text-[#ffffff] hover:text-[#c29b0c]"
                          onClick={() => setToggleDropdown(false)}>Eco System</p></Link>
                 <button type="button" className="md:hidden flex hover:text-[#c29b0c]" 
-                         onClick={() => {() => setToggleDropdown(false); signOut;}}>Log Out</button>
+                         onClick={() => {setToggleDropdown(false); signOut()}}>Log Out</button>
               </div>
 
                 )

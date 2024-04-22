@@ -20,11 +20,11 @@ const Statistics = () => {
 
           };
 
-         if(session?.user?.id){
+         if(session?.user){
           fetchUsers();}
         
 
-      }, [session?.user?.id]);
+      }, [session?.user]);
   return (
     <section className="mt-[70px] flex justify-center items-center mb-[25vw] lg:mb-0">
       {session?.user ? (
