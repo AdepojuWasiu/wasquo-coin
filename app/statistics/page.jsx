@@ -27,13 +27,14 @@ const Statistics = () => {
       }, [session?.user]);
   return (
     <section className="mt-[70px] flex justify-center items-center mb-[25vw] lg:mb-0">
-      {session?.user ? (
-        users.map((user) => (
-          <div className=" w-[80vw] gap-4 flex flex-col justify-center items-center sub_background  p-[40px] rounded-lg">
+       <div className=" w-[80vw] gap-4 flex flex-col justify-center items-center sub_background  p-[40px] rounded-lg">
           <div>
             <h1 className="text-[#c29b0c] md:text-[40px] text-[30px] ">Leader Board</h1>
           </div>
-          <div className="flex justify-between gap-[90px] bg-[#000000] px-[30px] py-[15px] rounded-2xl flex-col">
+          <div className="flex">
+          {session?.user ? (
+          users.map((user) => (
+          <div className="flex justify-between gap-[90px] bg-[#000000] px-[30px] py-[15px] rounded-2xl">
             <div className="flex">
               <Image src={user.image} alt='image' width={37} 
                 className= 'rounded-full' height={37} />
@@ -41,18 +42,11 @@ const Statistics = () => {
             </div>
             <div>
              <p className="mt-1.5">{user.point}</p>
-            </div>
-                 
+            </div>      
           </div>
-        
-        </div>
-
         ))
+         
       ):(
-        <div className=" w-[80vw] gap-4 flex flex-col justify-center items-center sub_background  p-[40px] rounded-lg">
-        <div>
-          <h1 className="text-[#c29b0c] md:text-[40px] text-[30px] ">Leader Board</h1>
-        </div>
         <div className="flex justify-between gap-[90px] bg-[#000000] px-[30px] py-[15px] rounded-2xl">
           <div className="flex">
             <Image src='/assets/logo.jpeg' alt='image' width={37} 
@@ -64,9 +58,9 @@ const Statistics = () => {
           </div>
                
         </div>
-      
-      </div>
       )}
+      </div>
+    </div>
   </section>
   )
 }
