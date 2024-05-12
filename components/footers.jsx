@@ -12,7 +12,8 @@ const Footers = () => {
       <div className='flex  md:flex-row flex-col justify-between items-center md:gap-[200px] gap-10 mt-[100px]'>
           <div className='flex justify-center items-center flex-col md:w-[30vw] w-[80vw]'>
             <h1 className='text-[#808080]'>WASQUO COIN</h1>
-            <p>To build the next global currency, we are offering the ways to reserve Wasquo coin. The more you participate the more wasquo you can reserve</p>
+            <p>To build the next global currency, we are offering the ways to reserve Wasquo coin.
+               The more you participate the more wasquo you can reserve</p>
           </div>
           <div className='flex gap-3 flex-col'>
             <div><h1 className='text-[#808080]'>Follow us on</h1></div>
