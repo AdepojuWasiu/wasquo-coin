@@ -1,32 +1,16 @@
-// pages/api/webhook.js
-export default async function handler(req, res) {
-    const { body } = req;
-
-    if (body.message && body.message.text === '/start') {
-        const chatId = body.message.chat.id;
-
-        const message = "Welcome to the bot! Click the button below to visit our web app.";
-        const buttonUrl = "https://wasquo-coin.vercel.app";
-
-        const response = await fetch(`https://api.telegram.org/bot7464071401:AAGhBXQJZJaGmfgUXH-y081GCJL8rBsBaVo/sendMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: message,
-                reply_markup: {
-                    inline_keyboard: [
-                        [{ text: "Visit Web App", url: buttonUrl }]
-                    ]
-                }
-            })
-        });
-
-        return res.status(200).json({ success: true });
+export default function handler(req, res) {
+    console.log('Request method:', req.method); // Log the request method
+  
+    if (req.method === 'POST') {
+      // Handle the incoming update from Telegram
+      console.log('Received update:', req.body);
+  
+      // Respond to Telegram with a 200 status
+      res.status(200).json({ message: 'Webhook received' });
+    } else {
+      // Respond with 405 if the method is not POST
+      res.setHeader('Allow', ['POST']);
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
-
-    return res.status(200).json({ success: false });
-}
-
+  }
+  
