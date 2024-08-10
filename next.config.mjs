@@ -8,6 +8,7 @@ const nextConfig = {
     experimental: {
       serverComponentsExternalPackages: ["mongoose"],
       missingSuspenseWithCSRBailout: false,
+      serverComponentsExternalPackages: ['grammy']
       
     },
     images: {

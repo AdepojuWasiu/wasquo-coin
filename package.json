@@ -11,6 +11,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.19",
     "bcrypt": "^5.1.1",
+    "grammy": "^1.28.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
     "next": "14.2.1",
