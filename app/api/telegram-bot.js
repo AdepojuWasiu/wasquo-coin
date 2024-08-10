@@ -1,34 +1,32 @@
+// pages/api/webhook.js
+export default async function handler(req, res) {
+    const { body } = req;
 
-import TelegramBot from "node-telegram-bot-api";
+    if (body.message && body.message.text === '/start') {
+        const chatId = body.message.chat.id;
 
-const token = process.env.TELEGRAM_BOT_TOKEN;
+        const message = "Welcome to the bot! Click the button below to visit our web app.";
+        const buttonUrl = "https://wasquo-coin.vercel.app";
 
-if (!token) {
-    console.error("Telegram bot token is missing. Please set the TELEGRAM_BOT_TOKEN environment variable.");
-    process.exit(1);
+        const response = await fetch(`https://api.telegram.org/bot7464071401:AAGhBXQJZJaGmfgUXH-y081GCJL8rBsBaVo/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                reply_markup: {
+                    inline_keyboard: [
+                        [{ text: "Visit Web App", url: buttonUrl }]
+                    ]
+                }
+            })
+        });
+
+        return res.status(200).json({ success: true });
+    }
+
+    return res.status(200).json({ success: false });
 }
 
-const bot = new TelegramBot(token, { polling: true });
-
-bot.onText(/\/start/, (msg) => {
-    const chatId = msg.chat.id;
-    const userId = msg.from.id;
-    const username = msg.from.username || 'unknown';
-
-    const buttonUrl = `https://wasquo-coin.vercel.app?user_id=${encodeURIComponent(userId)}&username=${encodeURIComponent(username)}`;
-    const message = 'Welcome to the bot!';
-
-    bot.sendMessage(chatId, message, {
-        reply_markup: {
-            inline_keyboard: [
-                [{ text: 'Visit Web App', url: buttonUrl }]
-            ]
-        }
-    }).catch(error => {
-        console.error("Failed to send message:", error);
-    });
-});
-
-export default function handler(req, res) {
-    res.status(200).json({ message: 'Telegram bot is running' });
-}
