@@ -11,7 +11,7 @@ bot.onText(/\/start/, (msg) => {
     const userId = msg.from.id;
     const username = msg.from.username || 'unknown'
 
-    const buttonUrl = `https://https://wasquo-coin.vercel.app?user_id=${userId}& username= ${username}`
+    const buttonUrl = `https://wasquo-coin.vercel.app?user_id=${userId}& username= ${username}`
     const message = 'welcome to the bot'
 
     bot.sendMessage(chatId, message, {
@@ -22,6 +22,7 @@ bot.onText(/\/start/, (msg) => {
         }
     })
 } )
+console.log(msg)
 
 export default function handler(req,res) {
     res.status(200).json({message:'Telegram bot is running'})
