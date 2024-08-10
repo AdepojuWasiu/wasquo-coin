@@ -12,3 +12,5 @@ bot.on('message', (msg) => {
         bot.sendMessage(chatId, 'welcome to the bot')
     }
 })
+curl -F "url=https://wasquo-coin.vercel.app/api/webhook" https://api.telegram.org/bot7464071401:AAGhBXQJZJaGmfgUXH-y081GCJL8rBsBaVo/setWebhook
+curl https://api.telegram.org/bot7464071401:AAGhBXQJZJaGmfgUXH-y081GCJL8rBsBaVo/getWebhookInfo
