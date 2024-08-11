@@ -92,8 +92,8 @@ const Home = () => {
             <Image src = '/assets/coin.jpeg' alt='logo' width= {50} height ={50} />
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
-          <div className="flex justify-center justify-items-center w-full mt-[50px]">
-          <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300} onClick={() => setCount(count+5)} />
+          <div className="flex justify-center justify-items-center w-full mt-[50px]" onClick={() => setCount(count+5)}>
+          <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
           </div>
           </div>
             )}
