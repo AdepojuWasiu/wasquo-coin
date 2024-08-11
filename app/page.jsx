@@ -5,7 +5,6 @@ import Image from "next/image"
 import { useEffect, useState ,Suspense} from "react"
 import { useSession } from "next-auth/react";
 import { useSearchParams } from 'next/navigation';
-import Loader from "@/components/loader";
 
 const Home = () => {
     const [copied, useCopied] = useState('');
@@ -61,7 +60,7 @@ const Home = () => {
 
 
   return (
-    <Suspense fallback = {<Loader />}> 
+    <Suspense fallback = {<p>Loading...</p>}> 
 
     <div className="mt-5  relative  flex w-full justify-center text-[#ffffff] flex-col items-center">
         { session?.user ? (
