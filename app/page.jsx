@@ -3,15 +3,12 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { useSession } from "next-auth/react";
-import { useRouter } from 'next/router'
+import { useSession } from "next-auth/react"
 
 const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
-    const router = useRouter();
-    const { user_id, username } = router.query;
 
     const {data: session} = useSession();
 
@@ -74,9 +71,10 @@ const Home = () => {
         </div>
             
             ):(
-             <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
-              <h1>Welcome, {username}!</h1>
-              <p>Your User ID is {user_id}</p>
+              <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
+          {isLogin && (
+            <div className="mb-5"><p>Please log In</p></div>
+          )}
           
           <div className="flex justify-center justify-items-center" >
             <Image src = '/assets/coin.jpeg' alt='logo' width= {50} height ={50} />
