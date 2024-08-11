@@ -21,7 +21,8 @@ bot.command('start', async (ctx) => {
 
     const url = `https://t.me/WasquoBot/wasquocoin?user_id=${userId}&username=${username}`;
 
-    await ctx.reply(`Welcome!${username} , your id is ${userId} Click the button below to visit the web app.`, {
+    await ctx.reply(`Welcome!${username} , your id is ${userId} Click the button below to visit the web app. 
+                          ${url}`, {
         reply_markup: {
             inline_keyboard: [
                 [{ text: 'Visit Web App', url }]
