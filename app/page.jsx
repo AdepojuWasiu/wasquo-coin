@@ -2,28 +2,22 @@
 
 
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useState ,Suspense} from "react"
 import { useSession } from "next-auth/react";
-import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import Loader from "@/components/loader";
 
 const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
-    const router = useRouter();
-    const [userId, setUserId] = useState(null);
-    const [username, setUsername] = useState(null);
+   
 
     const {data: session} = useSession();
+    const searchParams = useSearchParams();
+    const userId = searchParams.get('user_id');
+    const username = searchParams.get('username');
 
-    useEffect(() => {
-      // Wait for the router to be fully ready before accessing the query parameters
-      if (router.isReady) {
-          const { user_id, username } = router.query;
-          setUserId(user_id);
-          setUsername(username);
-      }
-  }, [router.isReady, router.query]);
 
 
     useEffect( () => {
@@ -67,6 +61,8 @@ const Home = () => {
 
 
   return (
+    <Suspense fallback = {<Loader />}> 
+
     <div className="mt-5  relative  flex w-full justify-center text-[#ffffff] flex-col items-center">
         { session?.user ? (
               
@@ -128,6 +124,8 @@ const Home = () => {
           </div>
         </div>
     </div>
+    
+    </Suspense>
     
   )
 }
