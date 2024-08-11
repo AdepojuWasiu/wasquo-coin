@@ -13,20 +13,35 @@
 
 // export default EcoSystem
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Ensure this is from next/navigation for App Router
+import { useEffect, useState } from 'react';
 
 export default function EcoSystem() {
     const router = useRouter();
-    const searchParams = new URLSearchParams(router.query);
-    const user_id = searchParams.get('user_id');
-    const username = searchParams.get('username');
+    const [userId, setUserId] = useState(null);
+    const [username, setUsername] = useState(null);
+
+    useEffect(() => {
+        const url = new URL(window.location.href);
+        const searchParams = new URLSearchParams(url.search);
+        const userIdFromParams = searchParams.get('user_id');
+        const usernameFromParams = searchParams.get('username');
+
+        if (userIdFromParams && usernameFromParams) {
+            setUserId(userIdFromParams);
+            setUsername(usernameFromParams);
+        }
+    }, [router]);
+
+    if (!userId || !username) return <p>Loading...</p>;
 
     return (
         <div>
             <h1>Welcome, {username}!</h1>
-            <p>Your User ID is {user_id}</p>
+            <p>Your User ID is {userId}</p>
         </div>
     );
 }
+
 
 
