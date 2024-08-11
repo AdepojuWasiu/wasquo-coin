@@ -10,12 +10,25 @@ const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
+    const [userId, setUserId] = useState(null);
+    const [username, setUsername] = useState(null);
+
    
 
     const {data: session} = useSession();
     const searchParams = useSearchParams();
-    const userId = searchParams.get('user_id');
-    const username = searchParams.get('username');
+
+    useEffect( () => {
+
+      if(searchParams){
+        const id = searchParams.get('user_id');
+        const name = searchParams.get('username');
+        setUserId(id);
+        setUsername(name);
+
+      }
+
+    }, [searchParams]) 
 
 
 
@@ -82,8 +95,8 @@ const Home = () => {
             ):(
               <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
               <div>
-              <h1>Welcome, {username}!</h1>
-              <p>Your User ID is {userId}</p>
+              <h1>Welcome,!</h1><p>{username}</p>
+              <p>Your User ID is </p><p>{userId}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >
