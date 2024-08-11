@@ -10,26 +10,15 @@ const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
-    const [userId, setUserId] = useState(null);
-    const [username, setUsername] = useState(null);
 
    
 
     const {data: session} = useSession();
     const searchParams = useSearchParams();
 
-    useEffect( () => {
-
-      if(searchParams){
-        const id = searchParams.get('user_id');
-        const name = searchParams.get('username');
-        setUserId(id);
-        setUsername(name);
-
-      }
-
-    }, [searchParams]) 
-
+   
+        const userId = searchParams.get('user_id') || 'No ID';
+        const username = searchParams.get('username') || 'No Username';
 
 
     useEffect( () => {
