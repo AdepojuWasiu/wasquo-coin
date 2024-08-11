@@ -3,14 +3,28 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { useSession } from "next-auth/react"
+import { useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 
 const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
+    const router = useRouter();
+    const [userId, setUserId] = useState(null);
+    const [username, setUsername] = useState(null);
 
     const {data: session} = useSession();
+
+    useEffect(() => {
+      // Wait for the router to be fully ready before accessing the query parameters
+      if (router.isReady) {
+          const { user_id, username } = router.query;
+          setUserId(user_id);
+          setUsername(username);
+      }
+  }, [router.isReady, router.query]);
+
 
     useEffect( () => {
       const fetchUser = async () => {
@@ -72,9 +86,10 @@ const Home = () => {
             
             ):(
               <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
-          {isLogin && (
-            <div className="mb-5"><p>Please log In</p></div>
-          )}
+              <div>
+              <h1>Welcome, {username}!</h1>
+              <p>Your User ID is {userId}</p>
+             </div>
           
           <div className="flex justify-center justify-items-center" >
             <Image src = '/assets/coin.jpeg' alt='logo' width= {50} height ={50} />

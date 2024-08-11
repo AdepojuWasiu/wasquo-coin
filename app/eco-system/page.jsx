@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 // const EcoSystem = () => {
 //   return (
@@ -44,31 +44,31 @@
 //     );
 // }
 
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+// import { useRouter } from 'next/navigation';
+// import { useEffect, useState } from 'react';
 
-const EcoSystem = () => {
-  const router = useRouter();
-  const [userId, setUserId] = useState(null);
+// const EcoSystem = () => {
+//   const router = useRouter();
+//   const [userId, setUserId] = useState(null);
 
-  useEffect(() => {
-    // Get user_id from query parameters
-    if (router.isReady) {
-      const { user_id } = router.query;
-      setUserId(user_id);
-    }
-  }, [router.isReady, router.query]);
+//   useEffect(() => {
+//     // Get user_id from query parameters
+//     if (router.isReady) {
+//       const { user_id } = router.query;
+//       setUserId(user_id);
+//     }
+//   }, [router.isReady, router.query]);
 
-  return (
-    <div>
-      {userId ? (
-        <p>User ID: {userId}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       {userId ? (
+//         <p>User ID: {userId}</p>
+//       ) : (
+//         <p>Loading...</p>
+//       )}
+//     </div>
+//   );
+// };
 
-export default EcoSystem;
+// export default EcoSystem;
 
