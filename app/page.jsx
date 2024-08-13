@@ -176,7 +176,7 @@ const Home = () => {
                 clicks.map((click) => (
                   <div
                     key={click.id}
-                    className="absolute text-[50px] font-bold text-blue-700"
+                    className="absolute text-[30px] font-bold text-blue-700"
                     style={{
                       top: `${click.y - 25}px`,
                       left: `${click.x - 15}px`,
