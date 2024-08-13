@@ -114,7 +114,7 @@ const Home = () => {
           </div>
         
              <div className="flex justify-center justify-items-center w-full mt-[50px] relative" onClick={handleCardClick}>
-             {/* <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  /> */}
+             <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
              {clicks.map((click) => (
               <div
                 key={click.id}
