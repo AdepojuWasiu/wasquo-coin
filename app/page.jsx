@@ -46,14 +46,14 @@ const Home = () => {
           const rect = card.getBoundingClientRect();
         
           const newClicks = Array.from(e.touches).map(touch => {
-            const x = touch.clientX - rect.left - rect.width / 10;
-            const y = touch.clientY - rect.top - rect.height / 10;
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
             
             // Return an object for each touch point
             return {
               id: Date.now() + Math.random(), // Unique ID for each touch
-              x: touch.pageX,
-              y: touch.pageY,
+              x: touch.clientX,
+              y: touch.clientY,
               transform: `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`
             };
           });
