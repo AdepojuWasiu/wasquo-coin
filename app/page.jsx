@@ -52,8 +52,8 @@ const Home = () => {
             // Return an object for each touch point
             return {
               id: Date.now() + Math.random(), // Unique ID for each touch
-              x: touch.clientX,
-              y: touch.clientY,
+              x: x,
+              y: y,
               transform: `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`
             };
           });
@@ -178,8 +178,8 @@ const Home = () => {
                     key={click.id}
                     className="absolute text-[50px] font-bold text-blue-700"
                     style={{
-                      top: `${click.y - 42}px`,
-                      left: `${click.x - 28}px`,
+                      top: `${click.y - 25}px`,
+                      left: `${click.x - 15}px`,
                       animation: `slide-out-top`
                     }}
                     onAnimationEnd={() => handleAnimationEnd(click.id)}
