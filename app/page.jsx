@@ -145,8 +145,8 @@ const Home = () => {
                         key={click.id}
                         className="absolute text-[20px] font-bold"
                         style={{
-                          top: `${click.y - 42}px`,
-                          left: `${click.x - 28}px`,
+                          // top: `${click.y - 42}px`,
+                          // left: `${click.x - 28}px`,
                           animation: `slide-out-top`
                         }}
                         onAnimationEnd={() => handleAnimationEnd(click.id)}
