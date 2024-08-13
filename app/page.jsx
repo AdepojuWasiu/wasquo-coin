@@ -138,8 +138,8 @@ const Home = () => {
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
         
-             <div className="flex justify-center justify-items-center  mt-[50px] w-100px h-100px relative" onTouchStart={handleCardClick}>
-                    {/* <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  /> */}
+             <div className="flex justify-center justify-items-center  mt-[50px] relative" onTouchStart={handleCardClick}>
+                    <Image src = '/assets/logo.jpeg' alt='logo' width= {300} height ={300}  />
                     {clicks.map((click) => (
                       <div
                         key={click.id}
