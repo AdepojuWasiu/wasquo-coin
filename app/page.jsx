@@ -138,12 +138,12 @@ const Home = () => {
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
         
-             <div className="flex justify-center justify-items-center  mt-[50px] relative" onTouchStart={handleCardClick}>
-                    <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
+             <div className="flex justify-center justify-items-center  mt-[50px] w-100px h-100px relative" onTouchStart={handleCardClick}>
+                    {/* <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  /> */}
                     {clicks.map((click) => (
                       <div
                         key={click.id}
-                        className="absolute text-[20px] font-bold"
+                        className="absolute text-[50px] font-bold"
                         style={{
                           // top: `${click.y - 42}px`,
                           // left: `${click.x - 28}px`,
@@ -151,7 +151,7 @@ const Home = () => {
                         }}
                         onAnimationEnd={() => handleAnimationEnd(click.id)}
                       >
-                        11
+                        +11
                       </div>
                   ))}
             </div>
