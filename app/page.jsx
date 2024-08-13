@@ -180,7 +180,7 @@ const Home = () => {
                     style={{
                       top: `${click.y - 25}px`,
                       left: `${click.x - 15}px`,
-                      animation: `slide-out-top`,
+                      animation: `float 1s ease-out`,
                       pointerEvents: 'none',
                     }}
                     onAnimationEnd={() => handleAnimationEnd(click.id)}

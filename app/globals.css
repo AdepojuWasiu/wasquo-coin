@@ -53,16 +53,17 @@ body{
   }
 
   
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-20px); /* Adjust the distance according to your need */
-      opacity: 0;
-    }
+ 
+@keyframes float {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
   }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
 
 
 
