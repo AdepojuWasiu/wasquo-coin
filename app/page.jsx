@@ -121,8 +121,8 @@ const Home = () => {
                         key={click.id}
                         className="absolute text-[20px] font-bold"
                         style={{
-                          top: `${click.y - 42}px`,
-                          left: `${click.x - 28}px`,
+                          top: `${click.y - 12}px`,
+                          left: `${click.x - 18}px`,
                           animation: `float 1s ease-out`
                         }}
                         onAnimationEnd={() => handleAnimationEnd(click.id)}
