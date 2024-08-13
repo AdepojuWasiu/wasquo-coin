@@ -27,7 +27,7 @@ const Home = () => {
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
           card.style.transform = `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
-          
+
           setTimeout(() => {
             card.style.transform = '';
           }, 100);
@@ -35,6 +35,10 @@ const Home = () => {
           setCount(count + 11);
           setClicks([...clicks, { id: Date.now(), x: e.pageX, y: e.pageY }]);
         }
+
+        const handleAnimationEnd = (id) => {
+          setClicks((prevClicks) => prevClicks.filter(click => click.id !== id));
+        };
 
 
     useEffect( () => {
@@ -111,6 +115,20 @@ const Home = () => {
         
              <div className="flex justify-center justify-items-center w-full mt-[50px]" onClick={handleCardClick}>
              <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
+             {clicks.map((click) => (
+              <div
+                key={click.id}
+                className="absolute text-5xl font-bold opacity-0"
+                style={{
+                  top: `${click.y - 42}px`,
+                  left: `${click.x - 28}px`,
+                  animation: `float 1s ease-out`
+                }}
+                onAnimationEnd={() => handleAnimationEnd(click.id)}
+              >
+                12
+              </div>
+            ))}
             </div>
              </div>
             )}
