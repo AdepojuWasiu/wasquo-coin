@@ -10,6 +10,7 @@ const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
+    const [clicks, setClicks] = useState([]);
 
    
 
@@ -19,6 +20,21 @@ const Home = () => {
    
         const userId = searchParams.get('user_id') || 'No ID';
         const username = searchParams.get('username') || 'No Username';
+
+        const handleCardClick = (e) => {
+          const card = e.currentTarget;
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          card.style.transform = `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
+          
+          setTimeout(() => {
+            card.style.transform = '';
+          }, 100);
+        
+          setCount(count + 11);
+          setClicks([...clicks, { id: Date.now(), x: e.pageX, y: e.pageY }]);
+        }
 
 
     useEffect( () => {
@@ -62,7 +78,7 @@ const Home = () => {
 
 
   return (
-    <Suspense fallback = {<p>Loading...</p>}> 
+    
 
     <div className="mt-5  relative  flex w-full justify-center text-[#ffffff] flex-col items-center">
         { session?.user ? (
@@ -92,15 +108,11 @@ const Home = () => {
             <Image src = '/assets/coin.jpeg' alt='logo' width= {50} height ={50} />
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
-             <div className="grid grid-cols-4">
-             <div className="flex justify-center justify-items-center w-full mt-[50px]" onClick={() => setCount(count+5)}>
+        
+             <div className="flex justify-center justify-items-center w-full mt-[50px]" onClick={handleCardClick}>
              <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
             </div>
-            <div onClick={() => setCount(count+5)}></div>
-            <div onClick={() => setCount(count+5)}></div>
-            <div onClick={() => setCount(count+5)}></div>
              </div>
-          </div>
             )}
         
         <div className="mt-[50px] gap-4 flex flex-col justify-center items-center sub_background w-[90vw] p-[40px] rounded-lg">
@@ -131,7 +143,7 @@ const Home = () => {
         </div>
     </div>
     
-    </Suspense>
+  
     
   )
 }
