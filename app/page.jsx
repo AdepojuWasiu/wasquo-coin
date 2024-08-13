@@ -113,12 +113,12 @@ const Home = () => {
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
         
-             <div className="flex justify-center justify-items-center w-full mt-[50px]" onClick={handleCardClick}>
-             <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
+             <div className="flex justify-center justify-items-center w-full mt-[50px] relative" onClick={handleCardClick}>
+             {/* <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  /> */}
              {clicks.map((click) => (
               <div
                 key={click.id}
-                className="absolute text-5xl font-bold opacity-0"
+                className="absolute text-5xl font-bold opacity-0 z-50"
                 style={{
                   top: `${click.y - 42}px`,
                   left: `${click.x - 28}px`,
@@ -126,7 +126,7 @@ const Home = () => {
                 }}
                 onAnimationEnd={() => handleAnimationEnd(click.id)}
               >
-                12
+                11
               </div>
             ))}
             </div>
