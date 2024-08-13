@@ -46,8 +46,8 @@ const Home = () => {
           const rect = card.getBoundingClientRect();
         
           const newClicks = Array.from(e.touches).map(touch => {
-            const x = touch.clientX - rect.left - rect.width / 2;
-            const y = touch.clientY - rect.top - rect.height / 2;
+            const x = touch.clientX - rect.left - rect.width / 10;
+            const y = touch.clientY - rect.top - rect.height / 10;
             
             // Return an object for each touch point
             return {
