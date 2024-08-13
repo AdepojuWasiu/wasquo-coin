@@ -52,3 +52,14 @@ body{
     background: #232B2B;
   }
 
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20px); /* Adjust the distance according to your need */
+      opacity: 0;
+    }
+  }
