@@ -22,7 +22,6 @@ const Home = () => {
         const username = searchParams.get('username') || 'No Username';
 
         const handleCardClick = (e) => {
-             e.preventDefault()
           const card = e.currentTarget;
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
