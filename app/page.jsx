@@ -41,27 +41,27 @@ const Home = () => {
           setClicks((prevClicks) => prevClicks.filter(click => click.id !== id));
         };
 
-        const handleTouchStart = (e) => {
-          e.preventDefault(); // Prevent default touch behavior
+        // const handleTouchStart = (e) => {
+        //   e.preventDefault(); // Prevent default touch behavior
         
-          // Loop through each touch point
-          for (let i = 0; i < e.touches.length; i++) {
-            const touch = e.touches[i];
+        //   // Loop through each touch point
+        //   for (let i = 0; i < e.touches.length; i++) {
+        //     const touch = e.touches[i];
             
-            // Create a synthetic event object for each touch
-            const syntheticEvent = {
-              ...e,
-              clientX: touch.clientX,
-              clientY: touch.clientY,
-              pageX: touch.pageX,
-              pageY: touch.pageY,
-              currentTarget: e.currentTarget,
-            };
+        //     // Create a synthetic event object for each touch
+        //     const syntheticEvent = {
+        //       ...e,
+        //       clientX: touch.clientX,
+        //       clientY: touch.clientY,
+        //       pageX: touch.pageX,
+        //       pageY: touch.pageY,
+        //       currentTarget: e.currentTarget,
+        //     };
         
-            // Call handleCardClick for each touch point
-            handleCardClick(syntheticEvent);
-          }
-        };
+        //     // Call handleCardClick for each touch point
+        //     handleCardClick(syntheticEvent);
+        //   }
+        // };
         
         
 
@@ -138,7 +138,7 @@ const Home = () => {
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
         
-             <div className="flex justify-center justify-items-center  mt-[50px] relative" onTouchStart={handleTouchStart}>
+             <div className="flex justify-center justify-items-center  mt-[50px] relative" onTouchStart={handleCardClick}>
                     <Image src = '/assets/coin.jpeg' alt='logo' width= {300} height ={300}  />
                     {clicks.map((click) => (
                       <div
