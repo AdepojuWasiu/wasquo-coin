@@ -41,6 +41,7 @@ const Home = () => {
         // };
 
         const handleCardClick = (e) => {
+          e.preventDefault();
           const card = e.currentTarget;
           const rect = card.getBoundingClientRect();
         
@@ -175,7 +176,7 @@ const Home = () => {
                 clicks.map((click) => (
                   <div
                     key={click.id}
-                    className="absolute text-[50px] font-bold"
+                    className="absolute text-[50px] font-bold text-blue-700"
                     style={{
                       top: `${click.y - 42}px`,
                       left: `${click.x - 28}px`,
