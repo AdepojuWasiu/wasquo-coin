@@ -32,11 +32,8 @@ const Home = () => {
           setTimeout(() => {
             card.style.transform = '';
           }, 100);
-          for (let i = 0; i < e.touches.length; i++) {
-            setCount(count + 11);
-
-          }
         
+          setCount(count + 11);
           setClicks([...clicks, { id: Date.now(), x: e.pageX, y: e.pageY }]);
         }
 
