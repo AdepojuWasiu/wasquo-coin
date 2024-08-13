@@ -21,44 +21,59 @@ const Home = () => {
         const userId = searchParams.get('user_id') || 'No ID';
         const username = searchParams.get('username') || 'No Username';
 
+        // const handleCardClick = (e) => {
+        //   const card = e.currentTarget;
+        //   const rect = card.getBoundingClientRect();
+        //   const x = e.clientX - rect.left - rect.width / 2;
+        //   const y = e.clientY - rect.top - rect.height / 2;
+        //   card.style.transform = `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
+
+        //   setTimeout(() => {
+        //     card.style.transform = '';
+        //   }, 100);
+        
+        //   setCount(count + 11);
+        //   setClicks([...clicks, { id: Date.now(), x: e.pageX, y: e.pageY }]);
+        // }
+
+        // const handleAnimationEnd = (id) => {
+        //   setClicks((prevClicks) => prevClicks.filter(click => click.id !== id));
+        // };
+
         const handleCardClick = (e) => {
           const card = e.currentTarget;
           const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          card.style.transform = `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
-
+        
+          const newClicks = Array.from(e.touches).map(touch => {
+            const x = touch.clientX - rect.left - rect.width / 2;
+            const y = touch.clientY - rect.top - rect.height / 2;
+            
+            // Return an object for each touch point
+            return {
+              id: Date.now() + Math.random(), // Unique ID for each touch
+              x: touch.pageX,
+              y: touch.pageY,
+              transform: `perspective(1000px) rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`
+            };
+          });
+        
+          // Apply the first touch's transform effect to the card
+          card.style.transform = newClicks[0]?.transform || '';
+        
+          // Reset the transform after 100ms
           setTimeout(() => {
             card.style.transform = '';
           }, 100);
         
-          setCount(count + 11);
-          setClicks([...clicks, { id: Date.now(), x: e.pageX, y: e.pageY }]);
-        }
-
+          // Update the clicks state with all the new touch points
+          setClicks([...clicks, ...newClicks]);
+          setCount(count + 11 * newClicks.length); // Adjust the count based on the number of touches
+        };
+        
         const handleAnimationEnd = (id) => {
           setClicks((prevClicks) => prevClicks.filter(click => click.id !== id));
         };
 
-        const handleTouchStart = (e) => {
-          e.preventDefault(); // Prevent default touch behavior
-        
-          // Loop through each touch point
-          for (let i = 0; i < e.touches.length; i++) {
-            const touch = e.touches[i];
-            
-            // Create a synthetic event object for each touch
-            const syntheticEvent = {
-              ...e,
-              clientX: touch.clientX,
-              clientY: touch.clientY,
-              pageX: touch.pageX,
-              pageY: touch.pageY,
-              currentTarget: e.currentTarget,
-            };
-        
-          }
-        };
         
         
 
@@ -135,7 +150,7 @@ const Home = () => {
             <p className="pt-[10px] text-[30px] ml-[20px]" >{count}</p>
           </div>
         
-             <div className="flex justify-center justify-items-center  mt-[50px] relative" onTouchStart={() => {handleTouchStart; handleCardClick}}>
+             {/* <div className="flex justify-center justify-items-center  mt-[50px] relative" onTouchStart={handleCardClick}>
                     <Image src = '/assets/logo.jpeg' alt='logo' width= {300} height ={300}  />
                     { 
                     clicks.map((click) => (
@@ -152,7 +167,28 @@ const Home = () => {
                         +11
                       </div>
                   ))}
+            </div> */}
+
+            <div className="flex justify-center justify-items-center mt-[50px] relative" onTouchStart={handleCardClick}>
+              <Image src='/assets/logo.jpeg' alt='logo' width={300} height={300} />
+              {
+                clicks.map((click) => (
+                  <div
+                    key={click.id}
+                    className="absolute text-[50px] font-bold"
+                    style={{
+                      top: `${click.y - 42}px`,
+                      left: `${click.x - 28}px`,
+                      animation: `slide-out-top`
+                    }}
+                    onAnimationEnd={() => handleAnimationEnd(click.id)}
+                  >
+                    +11
+                  </div>
+                ))
+              }
             </div>
+
              </div>
             )}
         
