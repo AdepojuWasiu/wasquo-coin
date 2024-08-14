@@ -1,8 +1,7 @@
 import Navbar from "@/components/nav";
 import "./globals.css";
 import Provider from "@/components/provider";
-import Footers from "@/components/footers"
-import { NextScript } from "next/document";
+import Footers from "@/components/footers";
 
 export const metadata= {
   title: "Wasquo Coin",
@@ -13,7 +12,6 @@ export const metadata= {
 const RootLayout = ({children}) => {
   return (
       <html lang="en">
-        <script src="https://telegram.org/js/telegram-web-app.js" />
         
           <body>
           <Provider>
@@ -22,7 +20,6 @@ const RootLayout = ({children}) => {
                       {children}
                       <Footers />
                   </main>
-                  <NextScript />
           
           </Provider>
 

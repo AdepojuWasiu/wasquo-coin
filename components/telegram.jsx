@@ -1,32 +1,31 @@
 'use client'
-// useTelegramInitData.js
 import { useEffect, useState } from 'react';
 
-/**
- * Hook to get the initial data from the Telegram Web Apps API already parsed.
- * @example
- * const { user } = useTelegramInitData();
- * console.log(user.username, user.id);
- */
 function useTelegramInitData() {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    const firstLayerInitData = Object.fromEntries(
-      new URLSearchParams(window.Telegram.WebApp.initData)
-    );
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.onReady(() => {
+        const firstLayerInitData = Object.fromEntries(
+          new URLSearchParams(window.Telegram.WebApp.initData)
+        );
 
-    const initData = {};
+        const initData = {};
 
-    for (const key in firstLayerInitData) {
-      try {
-        initData[key] = JSON.parse(firstLayerInitData[key]);
-      } catch {
-        initData[key] = firstLayerInitData[key];
-      }
+        for (const key in firstLayerInitData) {
+          try {
+            initData[key] = JSON.parse(firstLayerInitData[key]);
+          } catch {
+            initData[key] = firstLayerInitData[key];
+          }
+        }
+
+        setData(initData);
+      });
+    } else {
+      console.error("Telegram WebApp is not available");
     }
-
-    setData(initData);
   }, []);
 
   return data;
