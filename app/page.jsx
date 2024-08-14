@@ -51,7 +51,7 @@ const Home = () => {
 
             setTimeout(() => {
               handleAnimationEnd(id);
-            }, 1000);
+            }, 100);
             
             // Return an object for each touch point
             return {
