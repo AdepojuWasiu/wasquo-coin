@@ -2,6 +2,9 @@ import Navbar from "@/components/nav";
 import "./globals.css";
 import Provider from "@/components/provider";
 import Footers from "@/components/footers";
+import { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
+
 
 export const metadata= {
   title: "Wasquo Coin",
@@ -11,21 +14,26 @@ export const metadata= {
 
 const RootLayout = ({children}) => {
   return (
-      <html lang="en">
+      <Html lang="en">
+          <Head>
+          <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
+          </Head>
         
           <body>
           <Provider>
-                  <main className="relative">
+                  <Main className="relative">
                       <Navbar />
                       {children}
                       <Footers />
-                  </main>
+                  </Main>
+                  
           
           </Provider>
+          <NextScript />
 
           </body> 
 
-      </html>
+      </Html>
   )
 };
 
