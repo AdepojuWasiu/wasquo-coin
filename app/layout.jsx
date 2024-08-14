@@ -27,9 +27,9 @@ const RootLayout = ({children}) => {
                       <Footers />
                   </Main>
                   
-          
+                  <NextScript />
           </Provider>
-          <NextScript />
+          
 
           </body> 
 
