@@ -49,9 +49,6 @@ const Home = () => {
             const x = touch.clientX - rect.left;
             const y = touch.clientY - rect.top;
 
-            setTimeout(() => {
-              handleAnimationEnd(id);
-            }, 100);
             
             // Return an object for each touch point
             return {
@@ -78,6 +75,8 @@ const Home = () => {
         const handleAnimationEnd = (id) => {
           setClicks((prevClicks) => prevClicks.filter(click => click.id !== id));
         };
+
+        
 
         
         
@@ -184,7 +183,7 @@ const Home = () => {
                     style={{
                       top: `${click.y - 25}px`,
                       left: `${click.x - 15}px`,
-                      animation: `float 0.1s ease-out`,
+                      animation: `float 0.1s ease forwards`,
                     }}
                     onAnimationEnd={() => handleAnimationEnd(click.id)}
                   >
