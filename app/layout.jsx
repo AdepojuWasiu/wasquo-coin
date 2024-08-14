@@ -2,8 +2,6 @@ import Navbar from "@/components/nav";
 import "./globals.css";
 import Provider from "@/components/provider";
 import Footers from "@/components/footers";
-import { Head, Html, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 
 
 export const metadata= {
@@ -14,26 +12,21 @@ export const metadata= {
 
 const RootLayout = ({children}) => {
   return (
-      <Html lang="en">
-          <Head>
-          <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
-          </Head>
+      <html lang="en">
         
           <body>
           <Provider>
-                  <Main className="relative">
+                  <main className="relative">
                       <Navbar />
                       {children}
                       <Footers />
-                  </Main>
-                  
-                  <NextScript />
-          </Provider>
+                  </main>
           
+          </Provider>
 
           </body> 
 
-      </Html>
+      </html>
   )
 };
 
