@@ -17,26 +17,23 @@ const Home = () => {
    
 
     const {data: session} = useSession();
-    const searchParams = useSearchParams();
 
-    const initData = useTelegramInitData();
+  
 
     useEffect(() => {
       if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
         const telegram = window.Telegram.WebApp;
-  
-        // Start the WebApp
         telegram.ready();
-  
-        // Get the user's data
+    
+        // Safe to use the WebApp object here
         const user = telegram.initDataUnsafe.user;
-        setUserData(user);
+        setUserData(user)
       }
     }, []);
+    
 
    
-        const userId = searchParams.get('user_id') || 'No ID';
-        const username = searchParams.get('username') || 'No Username';
+
 
         // const handleCardClick = (e) => {
         //   const card = e.currentTarget;
