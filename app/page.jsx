@@ -5,13 +5,14 @@ import Image from "next/image"
 import { useEffect, useState ,Suspense} from "react"
 import { useSession } from "next-auth/react";
 import { useSearchParams } from 'next/navigation';
-import useTelegramInitData from "@/components/telegram";
+// import useTelegramInitData from "@/components/telegram";
 
 const Home = () => {
     const [copied, useCopied] = useState('');
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
     const [clicks, setClicks] = useState([]);
+    const [userData, setUserData] = useState(null);
 
    
 
@@ -20,7 +21,18 @@ const Home = () => {
 
     const initData = useTelegramInitData();
 
-    const user = initData.user;
+    useEffect(() => {
+      if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+        const telegram = window.Telegram.WebApp;
+  
+        // Start the WebApp
+        telegram.ready();
+  
+        // Get the user's data
+        const user = telegram.initDataUnsafe.user;
+        setUserData(user);
+      }
+    }, []);
 
    
         const userId = searchParams.get('user_id') || 'No ID';
@@ -150,8 +162,11 @@ const Home = () => {
             ):(
               <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
               <div>
-              <p>Username: {user?.username}</p>
-              <p>ID: {user?.id}</p>
+                    {userData ? (
+              <h1>Welcome, {userData.first_name}</h1>
+                ) : (
+              <h1>Loading...</h1>
+                )}
              </div>
           
           <div className="flex justify-center justify-items-center" >
