@@ -17,6 +17,7 @@ const Home = () => {
     const initData = useTelegramInitData();
 
     const user = initData.user;
+    const start_param = initData.start_param;
 
    
 
@@ -165,6 +166,7 @@ const Home = () => {
               <div>
               <p>Username: {user?.username}</p>
               <p>ID: {user?.id}</p>
+              <p>ref code: {start_param}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >

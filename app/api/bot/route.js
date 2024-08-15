@@ -19,10 +19,10 @@ bot.command('start', async (ctx) => {
     const userId = ctx.from.id; // Get the user's Telegram ID
     const username = ctx.from.username; // Get the user's username
 
-    const url = `https://t.me/WasquoBot/wasquocoin?user_id=${userId}&username=${username}`;
-
+    const url = `https://t.me/WasquoBot/wasquocoin`;
+    const refUrl = `https://t.me/WasquoBot/wasquocoin?start=referral_${userId}`
     await ctx.reply(`Welcome!${username} , your id is ${userId} Click the button below to visit the web app. 
-                          ${url}`, {
+                          ${refUrl}`, {
         reply_markup: {
             inline_keyboard: [
                 [{ text: 'Visit Web App', url }]
