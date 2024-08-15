@@ -1,49 +1,32 @@
-'use client';
-
+ 'use client'
+ // useTelegramInitData.js
 import { useEffect, useState } from 'react';
 
+/**
+ * Hook to get the initial data from the Telegram Web Apps API already parsed.
+ * @example
+ * const { user } = useTelegramInitData();
+ * console.log(user.username, user.id);
+ */
 function useTelegramInitData() {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    const loadTelegramSDK = () => {
-      const script = document.createElement('script');
-      script.src = 'https://telegram.org/js/telegram-web-app.js';
-      script.async = true;
-      document.body.appendChild(script);
+    const firstLayerInitData = Object.fromEntries(
+      new URLSearchParams(window.Telegram.WebApp.initData)
+    );
 
-      script.onload = () => {
-        if (window.Telegram && window.Telegram.WebApp) {
-          window.Telegram.WebApp.onReady(() => {
-            const firstLayerInitData = Object.fromEntries(
-              new URLSearchParams(window.Telegram.WebApp.initData)
-            );
+    const initData = {};
 
-            const initData = {};
-
-            for (const key in firstLayerInitData) {
-              try {
-                initData[key] = JSON.parse(firstLayerInitData[key]);
-              } catch {
-                initData[key] = firstLayerInitData[key];
-              }
-            }
-
-            setData(initData);
-          });
-        } else {
-          console.error('Telegram WebApp is not available');
-        }
-      };
-
-      return () => {
-        document.body.removeChild(script);
-      };
-    };
-
-    if (typeof window !== 'undefined') {
-      loadTelegramSDK();
+    for (const key in firstLayerInitData) {
+      try {
+        initData[key] = JSON.parse(firstLayerInitData[key]);
+      } catch {
+        initData[key] = firstLayerInitData[key];
+      }
     }
+
+    setData(initData);
   }, []);
 
   return data;

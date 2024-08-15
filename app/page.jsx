@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useEffect, useState ,Suspense} from "react"
 import { useSession } from "next-auth/react";
 import { useSearchParams } from 'next/navigation';
-// import useTelegramInitData from "@/components/telegram";
+import useTelegramInitData from "@/components/telegram";
 
 const Home = () => {
     const [copied, useCopied] = useState('');
@@ -13,6 +13,10 @@ const Home = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [clicks, setClicks] = useState([]);
     const [userData, setUserData] = useState(null);
+
+    const initData = useTelegramInitData();
+
+    const user = initData.user;
 
    
 
@@ -159,11 +163,8 @@ const Home = () => {
             ):(
               <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
               <div>
-                    {userData ? (
-              <h1>Welcome, {userData.first_name}</h1>
-                ) : (
-              <h1>Loading...</h1>
-                )}
+              <p>Username: {user?.username}</p>
+              <p>ID: {user?.id}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >
