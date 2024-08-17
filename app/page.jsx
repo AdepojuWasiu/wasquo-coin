@@ -14,10 +14,10 @@ const Home = () => {
     const [clicks, setClicks] = useState([]);
     const [userData, setUserData] = useState(null);
 
-    const initData = useTelegramInitData();
+    const {user, start_param} = useTelegramInitData();
 
-    const user = initData.user;
-    const start_param = initData.start_param;
+    // const user = initData.user;
+    // const start_param = initData.start_param;
 
    
 
