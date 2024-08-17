@@ -4,7 +4,7 @@
 import Image from "next/image"
 import { useEffect, useState ,Suspense} from "react"
 import { useSession } from "next-auth/react";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter} from 'next/navigation';
 import useTelegramInitData from "@/components/telegram";
 
 const Home = () => {
@@ -14,10 +14,12 @@ const Home = () => {
     const [clicks, setClicks] = useState([]);
     const [userData, setUserData] = useState(null);
 
-    const {user, start_param} = useTelegramInitData();
+    const initData = useTelegramInitData();
 
-    // const user = initData.user;
-    // const start_param = initData.start_param;
+    const user = initData.user;
+
+    const router = useRouter();
+    const {start} = router.query;
 
    
 
@@ -166,7 +168,7 @@ const Home = () => {
               <div>
               <p>Username: {user?.username}</p>
               <p>ID: {user?.id}</p>
-              <p>ref code: {start_param}</p>
+              <p>ref code: {start}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >

@@ -1,6 +1,4 @@
 'use client'
-import useTelegramInitData from "@/components/telegram"
-import { data } from "autoprefixer"
 
 const EcoSystem = () => {
   return (
@@ -8,7 +6,6 @@ const EcoSystem = () => {
            xl:mb-2 xl:mt-[10vw] mt-[20vw] gap-10 mb-[45vw]">
       <h1 className="text-[40px] text-[#c29b0c]">Coming Soon</h1>
       <p>The Ecosystem will be added at public launch</p>
-      <p>{data}</p>
       
     </div>
   )
