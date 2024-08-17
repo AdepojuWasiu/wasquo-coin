@@ -18,8 +18,7 @@ const Home = () => {
 
     const user = initData.user;
 
-    const router = useRouter();
-    const {start} = router.query;
+    const param = useSearchParams().get('start');
 
    
 
@@ -168,7 +167,7 @@ const Home = () => {
               <div>
               <p>Username: {user?.username}</p>
               <p>ID: {user?.id}</p>
-              <p>ref code: {start}</p>
+              <p>ref code: {param}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >
