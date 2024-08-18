@@ -15,9 +15,10 @@ const Home = () => {
     const [userData, setUserData] = useState(null);
 
     const initData = useTelegramInitData();
+    const searchParams = useSearchParams();
 
     const user = initData.data.user;
-    const referralCode = initData.referralCode;
+    const referralCode = searchParams.get('start');
 
    
 
