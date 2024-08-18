@@ -17,7 +17,7 @@ const Home = () => {
     const initData = useTelegramInitData();
 
     const user = initData.data.user;
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.Telegram.WebApp.search)
     const referralCode = urlParams.get('start');
 
 
