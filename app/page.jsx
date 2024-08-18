@@ -14,7 +14,9 @@ const Home = () => {
     const [clicks, setClicks] = useState([]);
     const [userData, setUserData] = useState(null);
 
-    const initData = useTelegramInitData();
+    // const initData = useTelegramInitData();
+
+    const { initData, referralCode } = useTelegramInitData();
 
     const user = initData.user;
 
@@ -165,7 +167,7 @@ const Home = () => {
               <div>
               <p>Username: {user?.username}</p>
               <p>ID: {user?.id}</p>
-              <p>ref code: {param}</p>
+              <p>ref code: {referralCode}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >
