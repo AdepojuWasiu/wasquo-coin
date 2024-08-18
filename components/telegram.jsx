@@ -27,10 +27,9 @@ function useTelegramInitData() {
     }
 
        // Extract the referral code if available
-       const startParam = initData.start;
-       if (startParam) {
-         setReferralCode(startParam);
-       }
+       const param = initData.get('startapp');
+             setReferralCode(param);
+
 
     // Optional: Log the init data to check what's available
     console.log('Telegram Init Data:', initData);

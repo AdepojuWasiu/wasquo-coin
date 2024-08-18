@@ -165,7 +165,7 @@ const Home = () => {
               <div className='background__main flex justify-center w-full  flex-col pt-[100px] pb-[150px] items-center scale-up-center'   >
               <div>
               <p>Username: {user?.username}</p>
-              <p>ID: {initData}</p>
+              <p>ID: {user?.id}</p>
               <p>ref code: {referralCode}</p>
              </div>
           
