@@ -20,7 +20,7 @@ bot.command('start', async (ctx) => {
     const username = ctx.from.username; // Get the user's username
 
     const url = `https://t.me/WasquoBot/wasquocoin`;
-    const refUrl = `https://t.me/WasquoBot/wasquocoin?start=referral_${userId}`
+    const refUrl = `https://t.me/WasquoBot/wasquocoin?start=referral_123`
     await ctx.reply(`Welcome!${username} , your id is ${userId} Click the button below to visit the web app. 
                           ${refUrl}`, {
         reply_markup: {
