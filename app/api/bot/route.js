@@ -36,7 +36,7 @@ bot.command('start', async (ctx) => {
     const url = `https://t.me/WasquoBot/wasquocoin`;
     const refUrl = `https://t.me/WasquoBot/wasquocoin?start=referral_123`
     await ctx.reply(`Welcome!${username} , your id is ${userId} Click the button below to visit the web app. 
-                          ${refUrl}`, {
+                          ${refUrl}, refeal ${referralCode}`,  {
         reply_markup: {
             inline_keyboard: [
                 [{ text: 'Visit Web App', url }]
