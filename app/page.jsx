@@ -18,8 +18,6 @@ const Home = () => {
 
     const user = initData.user;
 
-    const param = useSearchParams().get('start');
-
    
 
     const {data: session} = useSession();
