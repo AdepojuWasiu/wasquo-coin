@@ -14,11 +14,10 @@ const Home = () => {
     const [clicks, setClicks] = useState([]);
     const [userData, setUserData] = useState(null);
 
-    // const initData = useTelegramInitData();
+    const initData = useTelegramInitData();
 
-    const { initData, referralCode } = useTelegramInitData();
-
-    const user = initData.user;
+    const user = initData.data.user;
+    const referralCode = initData.referralCode;
 
    
 
