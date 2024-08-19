@@ -15,6 +15,7 @@ const Home = () => {
     const initData = useTelegramInitData();
 
     const user = initData.user;
+    const start_param = initData.start_param;
 
    
 
