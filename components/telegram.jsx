@@ -29,7 +29,8 @@ function useTelegramInitData() {
 
 
     // Optional: Log the init data to check what's available
-    console.log('Telegram Init Data:', initData);
+    // console.log('Telegram Init Data:', initData);
+    alert(JSON.stringify(initData));
 
     setData(initData);
   }, []);
