@@ -154,7 +154,7 @@ const Home = () => {
               <div>
               <p>Username: {user?.username}</p>
               <p>ID: {user?.id}</p>
-              <p>ref code: {user?.start_param}</p>
+              <p>ref code: {user?.chat_instance}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >
