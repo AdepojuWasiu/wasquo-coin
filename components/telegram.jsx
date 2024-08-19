@@ -25,13 +25,6 @@ function useTelegramInitData() {
         initData[key] = firstLayerInitData[key];
       }
     }
-
-       // Extract the referral code if available
-       const param = initData.get('startapp');
-       if(param){
-
-         setReferralCode(param);
-       }
              
 
 
