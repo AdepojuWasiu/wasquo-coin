@@ -4,7 +4,6 @@
 import Image from "next/image"
 import { useEffect, useState ,Suspense} from "react"
 import { useSession } from "next-auth/react";
-import { useSearchParams, useRouter} from 'next/navigation';
 import useTelegramInitData from "@/components/telegram";
 
 const Home = () => {
@@ -12,12 +11,10 @@ const Home = () => {
     const [count, setCount] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
     const [clicks, setClicks] = useState([]);
-    const [userData, setUserData] = useState(null);
 
     const initData = useTelegramInitData();
 
     const user = initData.data.user;
-    const referralCode = initData.referralCode;
 
    
 
@@ -25,16 +22,7 @@ const Home = () => {
 
   
 
-    useEffect(() => {
-      if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
-        const telegram = window.Telegram.WebApp;
-        telegram.ready();
-    
-        // Safe to use the WebApp object here
-        const user = telegram.initDataUnsafe.user;
-        setUserData(user)
-      }
-    }, []);
+   
     
 
    
@@ -166,7 +154,7 @@ const Home = () => {
               <div>
               <p>Username: {user?.username}</p>
               <p>ID: {user?.id}</p>
-              <p>ref code: {referralCode}</p>
+              <p>ref code: {user?.start_param}</p>
              </div>
           
           <div className="flex justify-center justify-items-center" >

@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
  */
 function useTelegramInitData() {
   const [data, setData] = useState({});
-  const [referralCode, setReferralCode] = useState(null);
 
   useEffect(() => {
     const firstLayerInitData = Object.fromEntries(
@@ -35,7 +34,7 @@ function useTelegramInitData() {
     setData(initData);
   }, []);
 
-  return {data, referralCode};
+  return data;
 }
 
 export default useTelegramInitData;
