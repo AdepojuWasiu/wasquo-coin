@@ -14,3 +14,6 @@ bot.on('message', (msg) => {
 })
 curl -F "url=https://wasquo-coin.vercel.app/api/bot" https://api.telegram.org/bot7464071401:AAGhBXQJZJaGmfgUXH-y081GCJL8rBsBaVo/setWebhook
 curl https://api.telegram.org/bot7464071401:AAGhBXQJZJaGmfgUXH-y081GCJL8rBsBaVo/getWebhookInfo
+
+curl -F "url=https://nonagon.vercel.app/api/bot" https://api.telegram.org/bot7517511615:AAF0hMJAqDP0gvsHbuxLFE-pwqztv0tqyfI/setWebhook
+curl https://api.telegram.org/bot7517511615:AAF0hMJAqDP0gvsHbuxLFE-pwqztv0tqyfI/getWebhookInfo
